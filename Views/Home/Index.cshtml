@@ -1,8 +1,34 @@
-﻿@{
+﻿@model appcalculadora.Models.Operacion
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+    <h1 class="display-4">Calculadora</h1>
+
+<form asp-controller="Home" asp-action="Consultar">
+    <div class="form-group">
+        <label asp-for="Type" for="Type">Operación</label>
+        <select asp-for="Type" name="Type" id="Type" class="form-control">
+            <option value="S">Suma</option>
+            <option value="R">Resta</option>
+            <option value="M">Multiplicación</option>
+            <option value="D">División</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Number1" for="Number1">Primer Número</label>
+        <input asp-for="Number1" type="number" class="form-control" id="Number1">
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Number2" for="Number2">Primer Número</label>
+        <input asp-for="Number2" type="number" class="form-control" id="Number2">
+    </div>
+    
+    <button type="submit" class="btn btn-primary" asp-controller="Home" asp-action="result">resolver</button>
+</form>
+
+
+<h1>@ViewData["result"]</h1>
